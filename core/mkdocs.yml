@@ -1,0 +1,14 @@
+site_name: stakeholder-core
+site_description: Shared parity contract and audit docs for stakeholder rewrites
+nav:
+  - Home: docs/index.md
+  - Source Audit: docs/source-audit.md
+  - Feature Inventory: docs/feature-inventory.md
+  - CLI Contract: docs/cli-contract.md
+  - Traceability Matrix: docs/traceability-matrix.md
+  - Parity Strategy: docs/parity-strategy.md
+  - Language Decisions: docs/language-decisions.md
+  - Gap Register: docs/gap-register.md
+  - Divergences: docs/divergences.md
+markdown_extensions:
+  - tables

@@ -1,0 +1,23 @@
+{
+  "name": "javascript-stakeholder",
+  "version": "0.1.0",
+  "description": "JavaScript stakeholder runtime with CLI, local web terminal, and experimental provider adapters.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "format": "npx --yes @biomejs/biome format --write src test scripts",
+    "lint": "npx --yes @biomejs/biome check src test scripts",
+    "build": "node scripts/build-check.js",
+    "test": "node --test",
+    "web": "node src/web.js",
+    "docker-build": "docker build -t javascript-stakeholder .",
+    "docker-test": "node scripts/docker-smoke.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "playwright-core": "^1.54.2",
+    "sql.js": "^1.13.0"
+  }
+}

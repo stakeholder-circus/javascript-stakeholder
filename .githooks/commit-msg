@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+msg_file=$1
+if grep -q '^Reviewed-by:' "$msg_file"; then
+  if grep -Eq '^(Assisted-by:|Generated-by:|Provenance: human|Provenance: code-generated)' "$msg_file"; then
+    exit 0
+  fi
+fi
+cat >&2 <<'ERR'
+commit-msg rejected: add Reviewed-by plus one provenance trailer.
+ERR
+exit 1

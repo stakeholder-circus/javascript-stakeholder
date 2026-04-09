@@ -1,11 +1,19 @@
-FROM rust:1-bookworm AS build
-WORKDIR /workspace
-COPY Cargo.toml Cargo.lock ./
-COPY src ./src
-RUN cargo test && cargo build --release
+FROM node:22-slim
 
-FROM debian:bookworm-slim
 WORKDIR /app
-COPY --from=build /workspace/target/release/rust-stakeholder /usr/local/bin/rust-stakeholder
-ENTRYPOINT ["rust-stakeholder"]
-CMD ["--list-values"]
+
+COPY package.json ./
+RUN npm install
+
+COPY biome.json ./
+COPY core ./core
+COPY scripts ./scripts
+COPY src ./src
+COPY test ./test
+
+RUN npm run lint
+RUN npm run build
+RUN npm test
+
+EXPOSE 3344
+ENTRYPOINT ["node", "src/index.js"]

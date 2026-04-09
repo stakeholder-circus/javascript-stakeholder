@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "stakeholder-cli-contract",
+  "type": "object",
+  "required": [
+    "devType",
+    "jargon",
+    "complexity",
+    "duration",
+    "alerts",
+    "project",
+    "minimal",
+    "team",
+    "framework"
+  ],
+  "properties": {
+    "devType": { "type": ["string", "null"] },
+    "jargon": { "type": ["string", "null"] },
+    "complexity": { "type": ["string", "null"] },
+    "duration": { "type": "integer", "minimum": 0 },
+    "alerts": { "type": ["string", "null"] },
+    "project": { "type": "string" },
+    "minimal": { "type": "boolean" },
+    "team": { "type": ["string", "null"] },
+    "framework": { "type": "string" },
+    "seed": { "type": ["integer", "string", "null"] },
+    "outputFormat": { "type": "string", "enum": ["text", "json"] },
+    "noColor": { "type": "boolean" },
+    "trace": { "type": "boolean" },
+    "listValues": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}

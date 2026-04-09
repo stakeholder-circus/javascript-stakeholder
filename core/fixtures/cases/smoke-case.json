@@ -1,0 +1,16 @@
+{
+  "devType": "backend",
+  "jargon": "moderate",
+  "complexity": "medium",
+  "duration": 3,
+  "alerts": "normal",
+  "project": "rewrite-bootstrap",
+  "minimal": true,
+  "team": "platform",
+  "framework": "",
+  "seed": 7,
+  "outputFormat": "json",
+  "noColor": true,
+  "trace": false,
+  "listValues": false
+}

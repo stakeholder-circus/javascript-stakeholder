@@ -1,0 +1,12 @@
+[
+  {
+    "eventType": "gap",
+    "sequence": 0,
+    "message": "Parity implementation not complete",
+    "timestamp": "1970-01-01T00:00:00Z",
+    "context": {
+      "source": "bootstrap",
+      "mode": "fail-fast"
+    }
+  }
+]

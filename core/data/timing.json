@@ -1,0 +1,5 @@
+{
+  "notes": "Replace placeholders with normalized timing abstractions after Rust audit.",
+  "defaultTickMillis": 1000,
+  "supportsDeterministicClock": true
+}

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>javascript-stakeholder terminal</title>
+    <meta
+      name="description"
+      content="Local tmux-like browser UI for deterministic and experimental generator sessions."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="backdrop" aria-hidden="true"></div>
+    <div class="shell" id="shell">
+      <header class="topbar pane">
+        <div class="brand">
+          <span class="brand-kicker">javascript-stakeholder</span>
+          <h1>generator terminal</h1>
+          <p>Deterministic runs, experimental provider sessions, and ANSI terminal playback.</p>
+        </div>
+        <div class="status-strip" id="status-strip">
+          <span class="status-pill" data-status="idle">idle</span>
+          <span class="status-pill" data-status="mode">static</span>
+          <span class="status-pill" data-status="provider">local</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="pane terminal-pane" data-pane="terminal" aria-label="Terminal pane">
+          <div class="pane-head">
+            <div>
+              <div class="pane-title">virtual terminal</div>
+              <div class="pane-subtitle">tmux-like prompt, ANSI spans, scrollback, and session output.</div>
+            </div>
+            <div class="pane-chips">
+              <span class="chip" id="chip-session">no session</span>
+              <span class="chip" id="chip-focus">focus: terminal</span>
+            </div>
+          </div>
+          <div class="terminal-scrollback" id="terminal-scrollback" tabindex="0" aria-live="polite"></div>
+          <form class="terminal-prompt" id="terminal-command-form" autocomplete="off">
+            <span class="prompt-prefix">$</span>
+            <input
+              id="terminal-command"
+              name="command"
+              type="text"
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="off"
+              placeholder="run | rerun | clear | split | focus inspector | provider use openai-compatible"
+            />
+            <button class="ghost-button" type="submit">execute</button>
+          </form>
+          <div class="terminal-help">
+            Commands: <code>run</code>, <code>rerun</code>, <code>clear</code>, <code>split</code>,
+            <code>focus terminal|controls|inspector</code>, <code>trace on|off</code>, <code>provider use ...</code>,
+            <code>profile use ...</code>, <code>prompt use ...</code>, <code>export session</code>
+          </div>
+        </section>
+
+        <aside class="pane controls-pane" data-pane="controls" aria-label="Session controls">
+          <div class="pane-head">
+            <div>
+              <div class="pane-title">session controls</div>
+              <div class="pane-subtitle">deterministic config, family focus, and run controls.</div>
+            </div>
+            <button class="ghost-button" id="reset-config" type="button">reset</button>
+          </div>
+
+          <form id="session-config-form" class="stacked-form">
+            <fieldset class="form-block">
+              <legend>baseline</legend>
+              <label>
+                <span>dev type</span>
+                <select id="dev-type" name="devType"></select>
+              </label>
+              <label>
+                <span>complexity</span>
+                <select id="complexity" name="complexity"></select>
+              </label>
+              <label>
+                <span>jargon</span>
+                <select id="jargon" name="jargon"></select>
+              </label>
+              <label>
+                <span>output format</span>
+                <select id="output-format" name="outputFormat"></select>
+              </label>
+              <label>
+                <span>seed</span>
+                <input id="seed" name="seed" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>project</span>
+                <input id="project" name="project" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>framework</span>
+                <input id="framework" name="framework" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>focus family</span>
+                <select id="focus-family" name="focusFamily"></select>
+              </label>
+              <label class="inline-toggle">
+                <input id="alerts" name="alerts" type="checkbox" />
+                <span>alerts</span>
+              </label>
+              <label class="inline-toggle">
+                <input id="team" name="team" type="checkbox" />
+                <span>team</span>
+              </label>
+              <label class="inline-toggle">
+                <input id="minimal" name="minimal" type="checkbox" />
+                <span>minimal</span>
+              </label>
+              <label class="inline-toggle">
+                <input id="trace" name="trace" type="checkbox" />
+                <span>trace</span>
+              </label>
+            </fieldset>
+
+            <fieldset class="form-block experimental">
+              <legend>experimental live-provider</legend>
+              <label>
+                <span>provider</span>
+                <select id="experimental-provider" name="experimentalProvider">
+                  <option value="local-demo">local-demo</option>
+                  <option value="openai-compatible">openai-compatible</option>
+                  <option value="anthropic">anthropic</option>
+                  <option value="consumer-session">consumer-session</option>
+                </select>
+              </label>
+              <label>
+                <span>model</span>
+                <input id="experimental-model" name="experimentalModel" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>profile</span>
+                <input id="experimental-profile" name="experimentalProfile" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>prompt</span>
+                <input id="experimental-prompt" name="experimentalPrompt" type="text" spellcheck="false" />
+              </label>
+              <label>
+                <span>adapter mode</span>
+                <select id="experimental-adapter-mode" name="experimentalAdapterMode">
+                  <option value="api">api</option>
+                  <option value="consumer">consumer</option>
+                </select>
+              </label>
+              <label>
+                <span>session material</span>
+                <textarea
+                  id="experimental-session-material"
+                  name="experimentalSessionMaterial"
+                  rows="4"
+                  spellcheck="false"
+                  placeholder="paste imported consumer session data or provider metadata here"
+                ></textarea>
+              </label>
+            </fieldset>
+          </form>
+
+          <div class="button-row">
+            <button class="primary-button" id="run-static" type="button">run static</button>
+            <button class="primary-button" id="run-experimental" type="button">run experimental</button>
+          </div>
+          <div class="button-row">
+            <button class="ghost-button" id="import-session" type="button">import session</button>
+            <button class="ghost-button" id="bootstrap-browser" type="button">bootstrap browser</button>
+            <button class="ghost-button" id="export-session" type="button">export session</button>
+          </div>
+
+          <section class="session-list">
+            <div class="section-label">recent sessions</div>
+            <div id="recent-sessions" class="recent-sessions" aria-live="polite"></div>
+          </section>
+        </aside>
+
+        <section class="pane inspector-pane" data-pane="inspector" aria-label="Event and provenance inspector">
+          <div class="pane-head">
+            <div>
+              <div class="pane-title">event inspector</div>
+              <div class="pane-subtitle">normalized event data, provenance, and trace rows.</div>
+            </div>
+            <div class="pane-chips">
+              <button class="tab-button is-active" data-tab="event" type="button">event</button>
+              <button class="tab-button" data-tab="provenance" type="button">provenance</button>
+              <button class="tab-button" data-tab="raw" type="button">raw</button>
+            </div>
+          </div>
+
+          <div class="inspector-body">
+            <div class="inspector-card" data-view="event">
+              <div class="card-title">selected event</div>
+              <dl class="kv-grid" id="event-summary"></dl>
+            </div>
+            <div class="inspector-card hidden" data-view="provenance">
+              <div class="card-title">provenance</div>
+              <dl class="kv-grid" id="provenance-summary"></dl>
+            </div>
+            <div class="inspector-card hidden" data-view="raw">
+              <div class="card-title">raw event payload</div>
+              <pre id="raw-event" class="raw-json"></pre>
+            </div>
+          </div>
+
+          <div class="trace-panel">
+            <div class="card-title">trace rows</div>
+            <pre id="trace-rows" class="trace-rows"></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

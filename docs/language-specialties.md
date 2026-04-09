@@ -1,5 +1,9 @@
-# Rust Language Specialties
+# Language Specialties
 
-- Rust is the canonical scheduler and generator baseline.
-- Shared domain concepts are modeled explicitly so follower languages can port stable semantics instead of re-deriving them.
-- Rust remains the reference for deterministic seeded behavior and normalized JSON semantics.
+- ESM only.
+- Node 22+.
+- `node:test` preferred.
+- `npm` and `bun` should invoke the same package scripts.
+- The shared engine should stay CLI and web terminal compatible.
+- Deterministic normalized JSON is the baseline contract.
+- Experimental provider mode is additive and stays out of default parity paths.

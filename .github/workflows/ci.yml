@@ -4,30 +4,46 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  native:
+  node:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [22]
     steps:
       - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/setup-node@v4
         with:
-          components: rustfmt, clippy
-      - name: Format
-        run: cargo fmt --check
-      - name: Lint
-        run: cargo clippy -- -D warnings
-      - name: Test
-        run: cargo test
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm run lint
+      - run: npm run build
+      - run: npm test
+      - run: node src/index.js --list-values
+
+  bun-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: bun install
+      - run: bun run build
+      - run: timeout 5s bun run web || [ $? -eq 124 ]
 
   docker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build image
-        run: docker build -t rust-stakeholder .
-      - name: Smoke test
-        run: docker run --rm rust-stakeholder --list-values
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run docker-test
