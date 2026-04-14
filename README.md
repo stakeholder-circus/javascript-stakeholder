@@ -2,14 +2,14 @@
 > This repository is part of a Codex-assisted rewrite experiment. All changes are manually reviewed, a human remains in the loop, and missing behavior is tracked explicitly rather than hidden. The project exists for fun, research, language learning, AI agent workflow/planning, interop experiments, and code review testing.
 # javascript-stakeholder
 
-JavaScript implementation of the stakeholder runtime with a shared deterministic engine, a local tmux-like web terminal, and an isolated experimental live-provider path. In the workspace status, this repo is the reference sidecar rather than a scaffold-only follower.
+JavaScript implementation of the stakeholder runtime with a shared deterministic engine, a local tmux-like web terminal, and the current JavaScript live-provider/runtime lane. It is not the deterministic follower template, but it is part of the eventual full live-provider program for every language.
 
 ## Implemented surface
 - ESM only.
 - Shared engine for CLI and web.
 - Deterministic seeded scheduler and normalized event output.
 - Local web terminal app under `/src/web` with ANSI DOM rendering and live SSE session streaming.
-- Workspace reference sidecar for live-provider behavior, browser-driven consumer capture, and web-terminal evidence.
+- Workspace live-provider lane for browser-driven consumer capture, provider-side runtime behavior, and web-terminal evidence.
 - Experimental provider runtime for:
   - `local-demo`
   - `openai-compatible`
@@ -39,7 +39,7 @@ JavaScript implementation of the stakeholder runtime with a shared deterministic
   - `--list-values` exposes the current value catalog.
 - Experimental provider mode:
   - opt-in only
-  - never part of deterministic parity fixtures
+  - current JavaScript implementation of the eventual full live-provider requirement across the program
   - provenance and cache metadata stay attached to experimental events
   - consumer profiles remain provider-specific and local-only
 

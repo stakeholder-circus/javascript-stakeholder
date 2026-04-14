@@ -1,13 +1,13 @@
 # javascript-stakeholder Status
 
-Last updated: 2026-04-09 21:16 CEST
+Last updated: 2026-04-13 CEST
 
-- Role: `provider-sidecar`
+- Role: `live-provider-and-web-terminal`
 - Parity class: `reference-sidecar`
-- Phase target: `provider-sidecar-baseline`
-- Phase state: `complete`
-- Phase completeness: `100%`
-- Program state: `co-equal provider runtime`
+- Phase target: `live-provider-runtime-and-web-terminal-lane`
+- Phase state: `in-progress`
+- Phase completeness: `84%`
+- Program state: `full-generator-and-live-provider-target`
 - Program completeness: `82%`
 - Rewrite completeness: `82%`
 - Functionality completeness: `78%`
@@ -17,9 +17,11 @@ Last updated: 2026-04-09 21:16 CEST
 
 ## Blockers
 - It is not part of the deterministic follower parity queue.
+- Browser bootstrap and consumer-session automation remain local-only and provider-specific.
+- Live provider integration tests remain opt-in and secret-gated.
 
 ## Next
-- Continue provider, browser, and web-terminal work as the co-equal sidecar runtime.
+- Continue hardening provider, browser, and web-terminal behavior as one of the active live-provider runtime lanes.
 
 ## Canonical references
 - [`stakeholder-core/docs/program/rewrite-status-matrix.md`](/Users/davidsupan/shareholder/stakeholder-core/docs/program/rewrite-status-matrix.md)
