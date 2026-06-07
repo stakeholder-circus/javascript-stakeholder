@@ -20,6 +20,7 @@ jobs:
         env:
           ACTIONLINT_VERSION: 1.7.12
         run: |
+          mkdir -p "$HOME/.local/bin"
           bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) "$ACTIONLINT_VERSION" "$HOME/.local/bin"
       - name: Run actionlint
         run: actionlint
