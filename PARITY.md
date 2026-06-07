@@ -2,7 +2,7 @@
 
 ## Role
 
-Experimental provider and web-terminal sidecar under stakeholder-circus; not the deterministic parity template.
+JavaScript live-provider and web-terminal lane under stakeholder-circus; not the deterministic parity template, but part of the eventual full live-provider runtime family across all languages.
 
 ## Parity class
 
