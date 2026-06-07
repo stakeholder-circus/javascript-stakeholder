@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install actionlint
         env:
-          ACTIONLINT_VERSION: v1.7.12
+          ACTIONLINT_VERSION: 1.7.12
         run: |
           bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) "$ACTIONLINT_VERSION" "$HOME/.local/bin"
       - name: Run actionlint
