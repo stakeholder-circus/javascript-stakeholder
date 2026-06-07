@@ -1,6 +1,6 @@
 # Experimental provider mode
 
-Experimental provider mode is implemented and intentionally isolated from deterministic parity behavior.
+This is the current JavaScript implementation of the eventual full live-provider requirement across the program.
 
 ## Supported provider paths
 - `local-demo`

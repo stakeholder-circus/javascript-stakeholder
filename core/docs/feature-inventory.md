@@ -1,13 +1,14 @@
 # Feature Inventory
 
-## Target behaviors to inventory from Rust
-- CLI argument parsing and defaults
-- event generation and sequencing
-- jargon, metrics, monitoring, and activity generators
-- display and rendering behavior
-- configuration normalization
-- interruption and duration handling
+## Current JavaScript lane inventory
+- deterministic CLI and web engine
+- seeded event sequencing and normalized JSON output
+- live SSE web terminal sessions
+- encrypted provider profiles, prompt assets, and personalization state
+- SQLite-backed cache and provenance state
+- provider adapters for local demo, OpenAI-compatible, Anthropic, and consumer-session flows
 
 ## Inventory status
-- Structure created
-- Rust source review pending
+- Current repo-local inventory is active.
+- Canonical family and contract inventory lives in `stakeholder-core`.
+- Remaining work is hardening and cross-lane validation, not bootstrap discovery.

@@ -1,3 +1,3 @@
 # stakeholder-core
 
-Shared contract, fixtures, parity rules, and documentation for the stakeholder multi-language rewrite.
+Local mirror of the shared contract, fixtures, parity rules, audit notes, and JavaScript-specific live-provider/runtime references for the stakeholder multi-language rewrite.
