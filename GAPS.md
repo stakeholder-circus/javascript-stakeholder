@@ -18,7 +18,7 @@
 - Consumer-session automation still depends on a locally available Playwright-compatible browser and provider-specific request templates.
 - Official provider integration tests remain opt-in and require local credentials or encrypted profile configuration.
 - `bun run web` is validated locally, but the script still launches the Node entrypoint rather than a Bun-specific server binary.
-- Experimental provider runtime still excludes deterministic parity fixtures and baseline CI.
+- Live-provider runtime remains outside deterministic follower CI today; contract tests and local/browser flows still need hardening before this lane can be treated as closed.
 
 ## Decision rules
 - Deterministic mode stays the default.

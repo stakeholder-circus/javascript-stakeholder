@@ -41,5 +41,5 @@ The local web terminal is implemented inside `javascript-stakeholder` and shares
 - Experimental provider controls remain provider-specific, with separate OpenAI consumer and Claude consumer profiles.
 
 ## Current limitation
-- Live SSE streaming is documented as the target path, but provider bootstrap and browser automation remain local-only and experimental.
+- The web terminal is one JavaScript-specific surface inside the broader live-provider program target; provider bootstrap and browser automation remain local-only for now.
 - Consumer profiles are provider-specific and do not currently migrate between OpenAI consumer and Claude consumer flows.
