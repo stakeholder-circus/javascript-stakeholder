@@ -1,10 +1,10 @@
 # stakeholder-core
 
-This repo is the canonical contract layer for the stakeholder rewrite effort.
+This repo-local mirror tracks the canonical contract layer used by `javascript-stakeholder`.
 
-## Bootstrap scope
+## Current scope
 - shared CLI and event schemas
 - normalized parity rules
-- source audit baselines
+- current Rust and Java audit references used by the JavaScript lane
 - deterministic fixtures and comparison tooling
-- language-level decision records
+- language-level decision records for the live-provider/runtime program
