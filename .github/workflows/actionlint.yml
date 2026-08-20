@@ -2,6 +2,7 @@ name: actionlint
 
 on:
   push:
+    branches: [main]
     paths:
       - '.github/workflows/**'
   pull_request:
@@ -16,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
       - name: Install actionlint
         env:
           ACTIONLINT_VERSION: 1.7.12
