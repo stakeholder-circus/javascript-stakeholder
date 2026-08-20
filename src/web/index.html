@@ -39,7 +39,13 @@
               <span class="chip" id="chip-focus">focus: terminal</span>
             </div>
           </div>
-          <div class="terminal-scrollback" id="terminal-scrollback" tabindex="0" aria-live="polite"></div>
+          <div
+            class="terminal-scrollback"
+            id="terminal-scrollback"
+            role="log"
+            aria-label="Terminal output"
+            aria-relevant="additions text"
+          ></div>
           <form class="terminal-prompt" id="terminal-command-form" autocomplete="off">
             <span class="prompt-prefix">$</span>
             <input
