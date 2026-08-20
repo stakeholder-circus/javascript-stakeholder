@@ -476,14 +476,14 @@ export async function createServerApp(options = {}) {
 				return;
 			}
 
-				notFound(response);
-			} catch (error) {
-				console.error("request handling failed", error);
-				json(response, 500, {
-					error: "internal_error",
-					message: "An internal error occurred.",
-				});
-			}
+			notFound(response);
+		} catch (error) {
+			console.error("request handling failed", error);
+			json(response, 500, {
+				error: "internal_error",
+				message: "An internal error occurred.",
+			});
+		}
 	});
 
 	return {
