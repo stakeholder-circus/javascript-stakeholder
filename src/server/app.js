@@ -476,13 +476,14 @@ export async function createServerApp(options = {}) {
 				return;
 			}
 
-			notFound(response);
-		} catch (error) {
-			json(response, 500, {
-				error: "internal_error",
-				message: error instanceof Error ? error.message : String(error),
-			});
-		}
+				notFound(response);
+			} catch (error) {
+				console.error("request handling failed", error);
+				json(response, 500, {
+					error: "internal_error",
+					message: "An internal error occurred.",
+				});
+			}
 	});
 
 	return {
