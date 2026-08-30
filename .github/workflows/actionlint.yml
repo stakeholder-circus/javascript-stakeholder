@@ -2,6 +2,7 @@ name: actionlint
 
 on:
   push:
+    branches: [main]
     paths:
       - '.github/workflows/**'
   pull_request:
@@ -15,12 +16,14 @@ jobs:
   actionlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
       - name: Install actionlint
         env:
           ACTIONLINT_VERSION: 1.7.12
         run: |
           mkdir -p "$HOME/.local/bin"
-          bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) "$ACTIONLINT_VERSION" "$HOME/.local/bin"
+          bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/914e7df21a07ef503a81201c76d2b11c789d3fca/scripts/download-actionlint.bash) "$ACTIONLINT_VERSION" "$HOME/.local/bin"
       - name: Run actionlint
         run: actionlint
