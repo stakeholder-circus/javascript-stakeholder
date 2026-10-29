@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "playwright-core": "^1.62.1",
-    "sql.js": "^1.14.2"
+    "sql.js": "^1.15.1"
   }
 }
